@@ -1,0 +1,40 @@
+.flex11 {
+    flex: 1 1 auto;
+  }
+
+.icons{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.flexNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* align-items: center; */
+    list-style-type: none;
+}
+
+.flexNav li{
+    margin-right: 30px;
+}
+
+.flexNav li a{
+    text-decoration: none;
+    color: azure;
+}
+.flexNav li a:hover{
+    color: #8e2ea1;
+}
+
+.flexList{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    /* border: 3px solid red; */
+    height: max-content;
+    flex-wrap: wrap;
+}
