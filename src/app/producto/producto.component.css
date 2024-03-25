@@ -20,9 +20,10 @@
 }
 
 .productoLi img{
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
+    max-width: 200px;
+    max-width: 200px;
+    block-size: 200px;
+    object-fit: scale-down;
     border-radius: 5%;
 }
 

@@ -14,7 +14,6 @@ export class ProductoComponent {
   @Input() producto: Producto | undefined;
   
   constructor() {
-    
   }
 
 }
