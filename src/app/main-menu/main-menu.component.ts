@@ -8,6 +8,8 @@ import { Producto } from '../../models/Producto';
 import { ProductoComponent } from '../producto/producto.component';
 import { ProductoService } from '../services/producto.service';
 import { HttpClientModule } from '@angular/common/http';
+import { User } from '../../models/User';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -16,37 +18,31 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule,RouterLink,MatToolbarModule,MatIcon,MatToolbarRow,ProductoComponent,HttpClientModule],
   templateUrl: './main-menu.component.html',
   styleUrl: './main-menu.component.css',
-  providers: [ProductoService]
+  providers: [ProductoService,UserService]
 })
 export class MainMenuComponent {
 
-  constructor(private productoService: ProductoService) { }
-
-    menuItems: MenuItem[] = [
-      { label: 'Inicio', link: '/' },
-      { label: 'Productos', link: '/productos' },
-      { label: 'Carrito', link: '/carrito' },
-      { label: 'Contacto', link: '/contacto' },
-    ];
-
-    productoPrueba = new Producto(1, 'Example Product', 10, 5, 'Example description', 'https://grimoldimediamanager.test.ingecloud.com/MediaFiles/Grimoldi/2021/10_2/0/108/78/7097952.jpg');
+  constructor(
+    private productoService: ProductoService,
+    private userService: UserService) { }
 
     productList: Producto[] = [];
+    userLogin: User = new User();
 
     ngOnInit() {
-      for (let index = 0; index < 20; index++) {
-        this.productList.push(this.productoPrueba);
-      }
 
       this.productoService.obtenerProductos().subscribe((data: any[]) => {
         this.productList = data;
       });
-      }
+
+      this.userService.obtenerUsuario7().subscribe((data: any) => {
+        this.userLogin = data;
+
+      });
+
+      console.log(this.userLogin)
     }
 
-  interface MenuItem {
-    label: string;
-    link: string;
-}
-
-
+    
+    
+  }
