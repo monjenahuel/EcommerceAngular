@@ -1,32 +1,140 @@
 <header>
-    <h1>Carrito de Compra</h1>
-  </header>
+  <h1>Carrito de Compra</h1>
+</header>
+<!-- <div class="container">
+  <div class="productos">
+    <h2>Productos</h2>
+      <table class="table table-borderless ">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detalle of carrito.detalleCarrito">
+            <td><img class="imagen" src="{{detalle.producto.image}}">{{detalle.producto.name}}</td>
+            <td>{{detalle.producto.actualPrice | currency}}</td>
+            <td>
+              <div class="btn-group selecCant">
+                <button class="btn btn-primary" (click)="disminuirCantidad(detalle.producto.id)">-</button>
+                <div>{{detalle.cantidad}}</div>
+                <button class="btn btn-primary" (click)="aumentarCantidad(detalle.producto.id)">+</button>
+              </div>
+            </td>
+            <td>{{detalle.cantidad * detalle.producto.actualPrice | currency}}</td>
+            <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    <p class="total">Total: {{carrito.priceTotal | currency}}</p>
+  </div> -->
+
   <div class="container">
-    <div class="productos">
-      <h2>Productos</h2>
-      <ul id="lista-productos">
-        <div>
-        <li *ngFor="let detalle of carrito.detalleCarrito">
-            <img class="imagen" src="{{detalle.producto.image}}">
-            {{detalle.producto.name}} 
-            {{detalle.producto.actualPrice | currency}}
-            <div>                
-                <button (click)="disminuirCantidad(detalle.producto.id)">-</button>
-                {{detalle.cantidad}}
-                <button (click)="aumentarCantidad(detalle.producto.id)">+</button>
-            </div> 
-        </li>
-    </div>
-      </ul>
-      <p class="total">Total: {{carrito.priceTotal | currency}}</p>
-    </div>
-    <div class="resumen">
-      <h3>Resumen de compra</h3>
-      <ul>
-        <li>Subtotal: {{carrito.priceTotal | currency}}</li>
-        <li>Envío: {{3000 | currency}}</li>
-        <li class="total-final">Total: {{carrito.priceTotal + 3000 | currency}}</li>
-        <button class="comprar">Finalizar compra</button>
-      </ul>
+    <div class="row d-flex">
+      <div class="col-8">
+        <h2>Productos</h2>
+        <table class="table table-borderless ">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detalle of carrito.detalleCarrito">
+              <td><img class="imagen" src="{{detalle.producto.image}}">{{detalle.producto.name}}</td>
+              <td>{{detalle.producto.actualPrice | currency}}</td>
+              <td>
+                <div class="btn-group selecCant">
+                  <button class="btn btn-primary" (click)="disminuirCantidad(detalle.producto.id)">-</button>
+                  <div>{{detalle.cantidad}}</div>
+                  <button class="btn btn-primary" (click)="aumentarCantidad(detalle.producto.id)">+</button>
+                </div>
+              </td>
+              <td>{{detalle.cantidad * detalle.producto.actualPrice | currency}}</td>
+              <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <p class="total">Total: {{carrito.priceTotal | currency}}</p>
+      </div>
+  
+      <div class="col-4 resumen">
+        <h2>Resumen de compra</h2>
+        <ul>
+          <li>Subtotal: {{carrito.priceTotal | currency}}</li>
+          <li>Envío: {{3000 | currency}}</li>
+          <li class="total-final">Total: {{carrito.priceTotal + 3000 | currency}}</li>
+          <button class="btn btn-primary ">Finalizar compra</button>
+        </ul>
+      </div>
     </div>
   </div>
+  
+  
+  <!-- Resumen -->
+  <!-- <div class="resumen w-auto">
+    <h3>Resumen de compra</h3>
+    <ul>
+      <li>Subtotal: {{carrito.priceTotal | currency}}</li>
+      <li>Envío: {{3000 | currency}}</li>
+      <li class="total-final">Total: {{carrito.priceTotal + 3000 | currency}}</li>
+      <button class="btn btn-primary ">Finalizar compra</button>
+    </ul>
+  </div>
+</div> -->
+
+<!-- <div class="container">
+  <h1>Tabla de Productos</h1>
+
+  <table class="table table-borderless ">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detalle of carrito.detalleCarrito">
+        <td><img class="imagen" src="{{detalle.producto.image}}">{{detalle.producto.name}}</td>
+        <td>{{detalle.producto.actualPrice | currency}}</td>
+        <td>
+          <div class="btn-group selecCant">
+            <button class="btn btn-primary" (click)="disminuirCantidad(detalle.producto.id)">-</button>
+            <div>{{detalle.cantidad}}</div>
+            <button class="btn btn-primary" (click)="aumentarCantidad(detalle.producto.id)">+</button>
+          </div>
+        </td>
+        <td>{{detalle.cantidad * detalle.producto.actualPrice | currency}}</td>
+        <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+    <!-- <ul id="lista-productos">
+      <div>
+        <li *ngFor="let detalle of carrito.detalleCarrito">
+          <img class="imagen" src="{{detalle.producto.image}}">
+          {{detalle.producto.name}}
+          {{detalle.producto.actualPrice | currency}}
+          <div class="btn-group selecCant">
+            <button class="btn btn-primary" (click)="disminuirCantidad(detalle.producto.id)">-</button>
+            <div>{{detalle.cantidad}}</div>
+            <button class="btn btn-primary" (click)="aumentarCantidad(detalle.producto.id)">+</button>
+          </div>
+        </li>
+      </div>
+    </ul> -->

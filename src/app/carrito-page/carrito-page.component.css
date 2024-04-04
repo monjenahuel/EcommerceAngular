@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+    font-family: roboto, sans-serif;
   }
   
   header {
@@ -10,20 +10,6 @@ body {
   
   h1 {
     margin: 0;
-  }
-  
-  .container {
-    display: flex;
-    padding: 20px;
-  }
-  
-  .productos,
-  .resumen {
-    flex: 1 0 48%; /* Set width to 48% for each section */
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
   }
   
   .productos ul {
@@ -50,16 +36,32 @@ body {
     margin: 0;
   }
   
-  button {
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 10px;
+  .selecCant{
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
   }
-  
+
+  .selecCant div{
+    margin: 0 10px;
+  }
+
+  .container{
+    margin-top: 20px;
+  }
+
+  /* .productos{
+    background-color: #f0f0f0;
+  } */
+
+  .resumen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    background-color: #f0f0f0;
+  }
+
   .resumen ul {
     list-style: none;
     padding: 0;
@@ -67,7 +69,8 @@ body {
   }
   
   .resumen li {
-    padding: 5px 0;
+    padding: 5px 0px;
+    margin-bottom: 15px;
     border-bottom: 1px solid #ddd;
   }
   
