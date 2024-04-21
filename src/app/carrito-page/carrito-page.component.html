@@ -1,9 +1,10 @@
 <header>
-  <h1>Carrito de Compra</h1>
+<app-carrusel></app-carrusel>
 </header>
-<!-- <div class="container">
-  <div class="productos">
-    <h2>Productos</h2>
+<div class="container">
+  <div class="row d-flex">
+    <div class="col-8">
+      <h2>Productos</h2>
       <table class="table table-borderless ">
         <thead>
           <tr>
@@ -11,130 +12,83 @@
             <th>Precio</th>
             <th>Cantidad</th>
             <th>Total</th>
-            <th>Eliminar</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let detalle of carrito.detalleCarrito">
-            <td><img class="imagen" src="{{detalle.producto.image}}">{{detalle.producto.name}}</td>
-            <td>{{detalle.producto.actualPrice | currency}}</td>
-            <td>
-              <div class="btn-group selecCant">
-                <button class="btn btn-primary" (click)="disminuirCantidad(detalle.producto.id)">-</button>
-                <div>{{detalle.cantidad}}</div>
-                <button class="btn btn-primary" (click)="aumentarCantidad(detalle.producto.id)">+</button>
+          <tr class="trCarrito" *ngFor="let detalle of carrito.detalleCarrito">
+            <td class="primerTD">
+              <div><img class="imagen" src="{{detalle.producto.image}}">
+                <p class="nombreProducto">{{detalle.producto.name}}</p>
               </div>
             </td>
-            <td>{{detalle.cantidad * detalle.producto.actualPrice | currency}}</td>
-            <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
+            <td>
+              <div>
+                <p class="number">{{detalle.producto.actualPrice | currency}}</p>
+              </div>
+            </td>
+            <td class="tdSelecCant">
+              <div class="selecCant">
+                <button class="btn btn-primary btn-minus" (click)="disminuirCantidad(detalle.producto.id)"><i
+                    class="bi bi-dash"></i></button>
+                <div>
+                  <p>{{detalle.cantidad}}</p>
+                </div>
+                <button class="btn btn-primary btn-plus" (click)="aumentarCantidad(detalle.producto.id)"><i
+                    class="bi bi-plus"></i></button>
+              </div>
+            </td>
+            <td>
+              <div>
+                <p class="number">{{detalle.cantidad * detalle.producto.actualPrice | currency}}</p>
+              </div>
+            </td>
+            <td>
+              <div class="divDelete"><button class="btn btn-danger btn-sm btn-delete"><i
+                    class="bi bi-trash-fill"></i></button></div>
+            </td>
           </tr>
         </tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <div class="total-final">
+              <p class="number">Subtotal: </p>
+            </div>
+          </td>
+          <td>
+            <div class="total-final">
+              <p class="number">{{carrito.priceTotal | currency}}</p>
+            </div>
+          </td>
+          <td></td>
+        </tr>
       </table>
+    </div>
 
-    <p class="total">Total: {{carrito.priceTotal | currency}}</p>
-  </div> -->
+    <div class="col-4 resumen">
+      <h2>Resumen de compra</h2>
+      <ul style="width: 80%;">
+        <li class="d-flex justify-content-between">
+          <p class="text-start ">Subtotal: </p>
+          <p class="text-end">{{carrito.priceTotal | currency}}</p>
+        </li>
+        <li class="d-flex justify-content-between">
+          <p>Envío: </p>
+          <p>{{3000 | currency}}</p>
+        </li>
+        <li class="d-flex justify-content-between total-final">
+          <p>Total: </p>
+          <p>{{carrito.priceTotal + 3000 | currency}}</p>
+        </li>
+        <li class="d-flex flex-column  justify-content-center mt-5"><button
+            class="btn btn-primary btn-finalizarCompra">Finalizar compra</button><a class="seguirComprando mt-2"
+            [routerLink]="'/productos'">
+            <p>seguir comprando</p>
+          </a></li>
 
-  <div class="container">
-    <div class="row d-flex">
-      <div class="col-8">
-        <h2>Productos</h2>
-        <table class="table table-borderless ">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Precio</th>
-              <th>Cantidad</th>
-              <th>Total</th>
-              <th>Eliminar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let detalle of carrito.detalleCarrito">
-              <td><img class="imagen" src="{{detalle.producto.image}}">{{detalle.producto.name}}</td>
-              <td>{{detalle.producto.actualPrice | currency}}</td>
-              <td>
-                <div class="btn-group selecCant">
-                  <button class="btn btn-primary" (click)="disminuirCantidad(detalle.producto.id)">-</button>
-                  <div>{{detalle.cantidad}}</div>
-                  <button class="btn btn-primary" (click)="aumentarCantidad(detalle.producto.id)">+</button>
-                </div>
-              </td>
-              <td>{{detalle.cantidad * detalle.producto.actualPrice | currency}}</td>
-              <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
-            </tr>
-          </tbody>
-        </table>
-  
-        <p class="total">Total: {{carrito.priceTotal | currency}}</p>
-      </div>
-  
-      <div class="col-4 resumen">
-        <h2>Resumen de compra</h2>
-        <ul>
-          <li>Subtotal: {{carrito.priceTotal | currency}}</li>
-          <li>Envío: {{3000 | currency}}</li>
-          <li class="total-final">Total: {{carrito.priceTotal + 3000 | currency}}</li>
-          <button class="btn btn-primary ">Finalizar compra</button>
-        </ul>
-      </div>
+      </ul>
     </div>
   </div>
-  
-  
-  <!-- Resumen -->
-  <!-- <div class="resumen w-auto">
-    <h3>Resumen de compra</h3>
-    <ul>
-      <li>Subtotal: {{carrito.priceTotal | currency}}</li>
-      <li>Envío: {{3000 | currency}}</li>
-      <li class="total-final">Total: {{carrito.priceTotal + 3000 | currency}}</li>
-      <button class="btn btn-primary ">Finalizar compra</button>
-    </ul>
-  </div>
-</div> -->
-
-<!-- <div class="container">
-  <h1>Tabla de Productos</h1>
-
-  <table class="table table-borderless ">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>Total</th>
-        <th>Eliminar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let detalle of carrito.detalleCarrito">
-        <td><img class="imagen" src="{{detalle.producto.image}}">{{detalle.producto.name}}</td>
-        <td>{{detalle.producto.actualPrice | currency}}</td>
-        <td>
-          <div class="btn-group selecCant">
-            <button class="btn btn-primary" (click)="disminuirCantidad(detalle.producto.id)">-</button>
-            <div>{{detalle.cantidad}}</div>
-            <button class="btn btn-primary" (click)="aumentarCantidad(detalle.producto.id)">+</button>
-          </div>
-        </td>
-        <td>{{detalle.cantidad * detalle.producto.actualPrice | currency}}</td>
-        <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
-
-    <!-- <ul id="lista-productos">
-      <div>
-        <li *ngFor="let detalle of carrito.detalleCarrito">
-          <img class="imagen" src="{{detalle.producto.image}}">
-          {{detalle.producto.name}}
-          {{detalle.producto.actualPrice | currency}}
-          <div class="btn-group selecCant">
-            <button class="btn btn-primary" (click)="disminuirCantidad(detalle.producto.id)">-</button>
-            <div>{{detalle.cantidad}}</div>
-            <button class="btn btn-primary" (click)="aumentarCantidad(detalle.producto.id)">+</button>
-          </div>
-        </li>
-      </div>
-    </ul> -->
+</div>

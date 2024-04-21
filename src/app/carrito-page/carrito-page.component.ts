@@ -10,11 +10,13 @@ import { Observable, concatMap, map } from 'rxjs';
 import { CarritoService } from '../services/carrito.service';
 import { User } from '../../models/User';
 import { switchMap } from 'rxjs';
+import { RouterModule } from '@angular/router';
+import { CarruselComponent } from '../shared/components/carrusel/carrusel.component';
 
 @Component({
   selector: 'app-carrito-page',
   standalone: true,
-  imports: [CurrencyPipe, NgFor],
+  imports: [CurrencyPipe, NgFor,RouterModule,CarruselComponent],
   templateUrl: './carrito-page.component.html',
   styleUrl: './carrito-page.component.css',
   providers: [ProductoService, UserService, CarritoService]

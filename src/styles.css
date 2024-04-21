@@ -3,12 +3,4 @@
 html, body { height: 100%; }
 body { 
     margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
-
-/* .container {
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto;
-    width: 1900px;
-  } */
