@@ -5,18 +5,17 @@ import { Producto } from '../../models/Producto';
 import { DetalleCarrito } from '../../models/DetalleCarrito';
 import { ProductoService } from '../services/producto.service';
 import { CurrencyPipe } from '@angular/common';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Observable, concatMap, map } from 'rxjs';
 import { CarritoService } from '../services/carrito.service';
 import { User } from '../../models/User';
-import { switchMap } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { CarruselComponent } from '../shared/components/carrusel/carrusel.component';
 
 @Component({
   selector: 'app-carrito-page',
   standalone: true,
-  imports: [CurrencyPipe, NgFor,RouterModule,CarruselComponent],
+  imports: [CurrencyPipe, NgFor,NgIf,RouterModule,CarruselComponent],
   templateUrl: './carrito-page.component.html',
   styleUrl: './carrito-page.component.css',
   providers: [ProductoService, UserService, CarritoService]
@@ -45,7 +44,7 @@ export class CarritoPageComponent {
       this.carrito.user = data;
     })
   }
-
+  //Fixme: Mandar al service
   async agregarProductoAlCarrito(idProducto: number) {
 
     const agregarProducto = this.productoService.obtenerProductoPorId(idProducto).pipe(map((data: Producto) => {
@@ -55,6 +54,7 @@ export class CarritoPageComponent {
     }))
 
     agregarProducto.pipe().subscribe((data) => { });
+    // this.carritoService.agregarProductoAlCarrito(idProducto)
   }
 
   async disminuirCantidad(idProducto: number) {
@@ -91,6 +91,17 @@ export class CarritoPageComponent {
       actualizarCarrito.pipe(
       concatMap(() => actualizarVistaCarrito),
     ).subscribe((data) => { });
+  }
+
+  //Fixme: Mandar al service
+  async eliminarDelCarrito(idProducto: number){
+    this.carrito.detalleCarrito = this.carrito.detalleCarrito.filter(detalle => detalle.producto.id != idProducto);
+    await this.refreshCarrito();
+  }
+
+  //Fixme: Mandar al service
+  carritoVacio(): boolean {
+    return this.carrito.detalleCarrito.length == 0;
   }
 
 }

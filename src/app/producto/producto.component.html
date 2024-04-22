@@ -3,4 +3,6 @@
     <h3>{{ producto?.name }}</h3>
     <p>{{ producto?.description | slice: 0 : 110}}</p><!-- TODO: Buscar la forma de poner los ... para cortar textos muy largos-->
     <span>{{producto?.actualPrice | currency}}</span>
+    <!-- <p>{{producto?.id}}</p> -->
+    <!-- <button (click)="agregarProductoAlCarrito(producto!.id)">Agregar al carrito</button> -->
 </li>
