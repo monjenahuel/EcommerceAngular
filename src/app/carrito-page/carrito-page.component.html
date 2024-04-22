@@ -15,7 +15,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="!carritoVacio()" >
           <tr class="trCarrito" *ngFor="let detalle of carrito.detalleCarrito">
             <td class="primerTD">
               <div><img class="imagen" src="{{detalle.producto.image}}">
@@ -44,27 +44,32 @@
               </div>
             </td>
             <td>
-              <div class="divDelete"><button class="btn btn-danger btn-sm btn-delete"><i
+              <div class="divDelete"><button (click)="eliminarDelCarrito(detalle.producto.id)" class="btn btn-danger btn-sm btn-delete"><i
                     class="bi bi-trash-fill"></i></button></div>
             </td>
           </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <div class="total-final">
+                <p class="number">Subtotal: </p>
+              </div>
+            </td>
+            <td>
+              <div class="total-final">
+                <p class="number">{{carrito.priceTotal | currency}}</p>
+              </div>
+            </td>
+            <td></td>
+          </tr>
         </tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>
-            <div class="total-final">
-              <p class="number">Subtotal: </p>
-            </div>
-          </td>
-          <td>
-            <div class="total-final">
-              <p class="number">{{carrito.priceTotal | currency}}</p>
-            </div>
-          </td>
-          <td></td>
-        </tr>
+       
       </table>
+      <div class="d-flex flex-column align-items-center " *ngIf="carritoVacio()">
+        <p>Parece vacio ¿Por que no intentas agregar algo?</p>
+        <img class="w-25" src="https://i.pinimg.com/originals/75/91/33/759133b1ecef972808b1b8c4f4936679.png" alt="">
+      </div>
     </div>
 
     <div class="col-4 resumen">
