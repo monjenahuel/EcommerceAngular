@@ -1,8 +1,9 @@
 <li class="productoLi">
     <img src="{{producto?.image}}" alt="{{ producto?.name }}">
     <h3>{{ producto?.name }}</h3>
-    <p>{{ producto?.description | slice: 0 : 110}}</p><!-- TODO: Buscar la forma de poner los ... para cortar textos muy largos-->
+    <!-- TODO: Buscar la forma de poner los ... para cortar textos muy largos-->
+    <!-- <p>{{ producto?.description | slice: 0 : 110}}</p> -->
     <span>{{producto?.actualPrice | currency}}</span>
-    <!-- <p>{{producto?.id}}</p> -->
-    <!-- <button (click)="agregarProductoAlCarrito(producto!.id)">Agregar al carrito</button> -->
+    <p>ID:{{producto?.id}}</p>
+    <button (click)="agregarProductoAlCarrito(producto!.id)">Agregar al carrito</button>
 </li>

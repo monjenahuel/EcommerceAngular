@@ -53,7 +53,9 @@ export class CarritoPageComponent {
       return data
     }))
 
-    agregarProducto.pipe().subscribe((data) => { });
+    agregarProducto.pipe().subscribe(async (data) => { 
+      await this.refreshCarrito();
+    });
     // this.carritoService.agregarProductoAlCarrito(idProducto)
   }
 

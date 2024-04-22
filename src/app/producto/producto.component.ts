@@ -24,8 +24,9 @@ export class ProductoComponent {
   ) {
   }
 
-  // agregarProductoAlCarrito(idProducto: number) {
-  //   this.carritoService.agregarProductoAlCarrito(idProducto)
-  // }
+  agregarProductoAlCarrito(idProducto: number) {
+    console.log("en Producto Component",idProducto)
+    this.carritoService.agregarProductoAlCarrito(idProducto)
+  }
 
 }
