@@ -45,10 +45,13 @@ h3{
     text-overflow: ellipsis;
   }
 
+  .btn-listado{
+    margin: 5px 0px;
+  }
+  
   .btn-agregarAlCarrito{
     background-color: #8e2ea1;
     border: #671777;
-    margin: 5px 0px;
   }
 
   .btn-agregarAlCarrito:hover{

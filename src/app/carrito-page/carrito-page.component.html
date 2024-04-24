@@ -87,11 +87,15 @@
           <p>Total: </p>
           <p>{{carrito.priceTotal + 3000 | currency}}</p>
         </li>
-        <li class="d-flex flex-column  justify-content-center mt-5"><button
-            class="btn btn-primary btn-finalizarCompra">Finalizar compra</button><a class="seguirComprando mt-2"
-            [routerLink]="'/productos'">
-            <p>seguir comprando</p>
-          </a></li>
+        <li class="d-flex flex-column  justify-content-center mt-5">
+          <button
+            class="btn btn-primary btn-finalizarCompra"
+            [disabled]="carritoVacio()">Finalizar compra
+          </button>
+            <a class="seguirComprando mt-2"[routerLink]="'/productos'">
+              <p>seguir comprando</p>
+            </a>
+        </li>
 
       </ul>
     </div>

@@ -25,8 +25,16 @@ export class ProductoComponent {
   }
 
   agregarProductoAlCarrito(idProducto: number) {
-    console.log("en Producto Component",idProducto)
     this.carritoService.agregarProductoAlCarrito(idProducto)
+    this.producto!.isInCart = true;
+  }
+
+  hasStock(): boolean{
+    return this.producto!.stock > 0;
+  }
+
+  isInCart(): boolean{
+    return this.producto!.isInCart;
   }
 
 }

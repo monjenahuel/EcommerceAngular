@@ -3,5 +3,7 @@
     <h3 class="textoProducto">{{ producto?.name }}</h3>
     <p class="textoProducto">{{ producto?.description | slice: 0 : 110}}</p>
     <span>{{producto?.actualPrice | currency}}</span>
-    <button class="btn btn-primary btn-agregarAlCarrito" (click)="agregarProductoAlCarrito(producto!.id)">Agregar al carrito</button>
+    <button *ngIf="!hasStock()" class="btn btn-secondary btn-listado" disabled>Sin stock</button>
+    <button *ngIf="!isInCart() && hasStock()" class="btn btn-primary btn-agregarAlCarrito btn-listado" (click)="agregarProductoAlCarrito(producto!.id)">Agregar al carrito</button>
+    <button *ngIf="isInCart() && hasStock()" class="btn btn-success btn-listado active" >Producto ya en el carrito</button>
 </li>

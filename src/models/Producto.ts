@@ -5,6 +5,7 @@ export class Producto{
     public actualPrice:number
     public description:string
     public image?:string
+    public isInCart:boolean = false;
 
   
     constructor(id: number, nombre: string, actualPrice: number,stock:number, description: string,image:string) {
