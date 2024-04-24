@@ -42,32 +42,6 @@ export class CarritoService {
     return this.http.patch<any>(this.carritoURL + '/' + id,carrito);
   }
 
-  // async agregarProductoAlCarrito(idProducto: number) {
-
-  //   const obtenerCarritoPorId = this.obtenerCarritoPorId(this.carritoId).pipe(map((data: Carrito) => {
-  //     this.carrito = data;
-  //     return data
-  //   }))
-
-  //   const agregarProducto = this.productoService.obtenerProductoPorId(idProducto).pipe(map((producto: Producto) => {
-  //     let detalleCarrito = new DetalleCarrito(0, 1, producto);
-  //     this.carrito.detalleCarrito.push(detalleCarrito);
-  //     return producto
-  //   }))
-
-  //   const actualizarCarrito = this.actualizarCarrito(this.carrito, this.carritoId).pipe(map((data: Carrito) => {
-  //     this.carrito = data;
-  //     return data
-  //   }))
-
-  //   agregarProducto.pipe(
-  //     concatMap(() => actualizarCarrito),
-  //   ).subscribe((data) => { 
-  //     console.log("Producto agregado al carrito",data)
-  //   });
-
-  // }
-
   async agregarProductoAlCarrito(idProducto: number) {
 
     const agregarProducto = this.productoService.obtenerProductoPorId(idProducto).pipe(map((producto: Producto) => {

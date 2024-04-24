@@ -3,13 +3,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: left;
-    border: 1px solid #3d0441;
-    /* box-shadow: 0px 0px 5px 0px #040971; */
-    border-radius: 5%;
-    padding: 5px;
+    border: 1px solid #3d044134;
+    padding: 0px 5px;
     margin: 10px;
-    width: 200px;
-    height: 350px;
+    width: 300px;
+    height: 500px;
 }
 
 .productoLi h3, .productoLi span{
@@ -22,11 +20,12 @@
 }
 
 .productoLi img{
-    max-width: 200px;
-    max-width: 200px;
-    block-size: 200px;
-    object-fit: scale-down;
-    border-radius: 5%;
+    padding: 0px 1px;
+    max-width: 300px;
+    max-height: 300px;
+    height: 300px;
+    width: 300px;
+    align-self: center;
 }
 
 h3{
@@ -34,13 +33,25 @@ h3{
 }
 
 .productoLi:hover{
-    box-shadow: 0px 0px 5px 0px #8e2ea1;
+    box-shadow: 0px 0px 5px 0px #480d53;
     cursor: pointer;
-    scale: 1.05;
+    scale: 1.01;
     transition: all 0.2s;
 }
 
-.productoLi:hover span{
-    color: rgb(148, 7, 7);
-    transition: all 0.2s;
-}
+.textoProducto{
+    height: 35px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .btn-agregarAlCarrito{
+    background-color: #8e2ea1;
+    border: #671777;
+    margin: 5px 0px;
+  }
+
+  .btn-agregarAlCarrito:hover{
+    background-color: #480d53;
+    border: #671777;
+  }
