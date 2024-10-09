@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, concatMap, map, switchMap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Carrito } from '../../models/Carrito';
@@ -13,10 +13,10 @@ import { Producto } from '../../models/Producto';
 })
 export class CarritoService {
 
+  private http = inject(HttpClient);
   private carritoURL = environment.apiUrl + '/carrito';
   
   constructor(
-    private http: HttpClient,
     private productoService: ProductoService) { }
 
   carrito: Carrito = new Carrito();
@@ -32,7 +32,7 @@ export class CarritoService {
     }).closed;
   }
 
-  obtenerCarritoPorId(id: number): Observable<Carrito> {
+  obtenerCarritoPorId(id: number): Observable<any> {
     console.log("Get Carrito",this.carritoURL + '/' + id)
     return this.http.get<any>(this.carritoURL + '/' + id);
   }
