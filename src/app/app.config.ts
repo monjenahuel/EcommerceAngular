@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations'; // Import the 'routes' variable from the correct file
 
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { ngrokInterceptor } from './interceptors/ngrok.interceptor';
+import { HeadersInterceptor } from './interceptors/headers.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),  
     {
         provide:HTTP_INTERCEPTORS,
-        useClass:ngrokInterceptor,
+        useClass:HeadersInterceptor,
         multi:true
     }
   ]
