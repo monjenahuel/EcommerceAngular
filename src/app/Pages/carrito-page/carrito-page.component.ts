@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { Carrito } from '../../models/Carrito';
-import { UserService } from '../services/user.service';
-import { Producto } from '../../models/Producto';
-import { DetalleCarrito } from '../../models/DetalleCarrito';
-import { ProductoService } from '../services/producto.service';
-import { CurrencyPipe } from '@angular/common';
+import { Carrito } from '../../../models/Carrito';
+import { UserService } from '../../services/user.service';
+import { Producto } from '../../../models/Producto';
+import { DetalleCarrito } from '../../../models/DetalleCarrito';
+import { ProductoService } from '../../services/producto.service';
+import { CurrencyPipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgFor, NgIf } from '@angular/common';
 import { Observable, concatMap, map } from 'rxjs';
-import { CarritoService } from '../services/carrito.service';
-import { User } from '../../models/User';
+import { CarritoService } from '../../services/carrito.service';
+import { User } from '../../../models/User';
 import { RouterModule } from '@angular/router';
-import { CarruselComponent } from '../shared/components/carrusel/carrusel.component';
+import { CarruselComponent } from '../../shared/components/carrusel/carrusel.component';
 
 @Component({
   selector: 'app-carrito-page',
@@ -18,7 +18,7 @@ import { CarruselComponent } from '../shared/components/carrusel/carrusel.compon
   imports: [CurrencyPipe, NgFor,NgIf,RouterModule,CarruselComponent],
   templateUrl: './carrito-page.component.html',
   styleUrl: './carrito-page.component.css',
-  providers: [ProductoService, UserService, CarritoService]
+  providers: [ProductoService, UserService, CarritoService, {provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class CarritoPageComponent {
 

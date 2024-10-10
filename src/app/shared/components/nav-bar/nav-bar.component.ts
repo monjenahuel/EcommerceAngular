@@ -3,12 +3,13 @@ import { RouterLink } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIcon} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [MatToolbarModule,RouterLink,MatIcon,CommonModule],
+  imports: [MatToolbarModule,RouterLink,MatIcon,CommonModule, MatButtonModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })

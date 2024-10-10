@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatToolbarRow } from '@angular/material/toolbar';
 import {MatIcon} from '@angular/material/icon';
-import { Producto } from '../../models/Producto';
+import { Producto } from '../../../models/Producto';
 import { ProductoComponent } from '../producto/producto.component';
-import { ProductoService } from '../services/producto.service';
+import { ProductoService } from '../../services/producto.service';
 import { HttpClientModule } from '@angular/common/http';
-import { User } from '../../models/User';
-import { UserService } from '../services/user.service';
-import { CarritoService } from '../services/carrito.service';
-import { Carrito } from '../../models/Carrito';
+import { User } from '../../../models/User';
+import { UserService } from '../../services/user.service';
+import { CarritoService } from '../../services/carrito.service';
+import { Carrito } from '../../../models/Carrito';
 import { concatMap, map, mergeMap } from 'rxjs';
 
 
 @Component({
   selector: 'app-main-menu',
   standalone: true,
-  imports: [CommonModule,RouterLink,MatToolbarModule,MatIcon,MatToolbarRow,ProductoComponent,HttpClientModule],
+  imports: [CommonModule,RouterLink,MatToolbarModule,MatIcon,MatToolbarRow,ProductoComponent,HttpClientModule,],
   templateUrl: './main-menu.component.html',
   styleUrl: './main-menu.component.css',
-  providers: [ProductoService,UserService,CarritoService]
+  providers: [ProductoService,UserService,CarritoService,{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 
 export class MainMenuComponent {

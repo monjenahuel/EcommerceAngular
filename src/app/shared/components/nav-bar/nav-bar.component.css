@@ -12,18 +12,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    /* align-items: center; */
-    list-style-type: none;
+    align-items: center;
 }
 
-.flexNav li{
+button{
     margin-right: 30px;
-}
-
-.flexNav li a{
     text-decoration: none;
     color: azure;
-}
-.flexNav li a:hover{
-    color: #8e2ea1;
 }
